@@ -20,6 +20,9 @@ Aşağıdakileri yap:
    İPUCU: fonksiyon oluşturmaya gerek yok
 */
 
+const surucuYasi = 20;
+console.log(surucuYasi > 18);
+
 /*
 Görev 1b - Değerler (puanlamaya dahil değildir)
 
@@ -32,6 +35,13 @@ Aşağıdakileri yap:
    İPUCU: fonksiyon oluşturmaya gerek yok
 */
 
+let birinciDeger = 10;
+let ikinciDeger = 30;
+if(ikinciDeger < birinciDeger) {
+  birinciDeger = ikinciDeger;
+}
+console.log(birinciDeger);
+
 /*
 Görev 1c - String bir değeri Number'a dönüştürün (puanlamaya dahil değildir)
 
@@ -42,6 +52,10 @@ Aşağıdakileri yap:
 
    İPUCU: Number metoduna bakabilirsin
 */
+
+const str = "1999";
+const int = Number(str);
+console.log(int);
 
 /*
 Görev 1d - Çarpma
@@ -65,8 +79,8 @@ Aşağıdakileri yap:
  3. Hesaplanan köpeğin yaşını dönün.
  */
 
-function kopeginYasi(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function kopeginYasi(year) {
+  return year * 7;
 }
 
 /* Görev 3 */
@@ -84,7 +98,21 @@ OYUNUN KURALLARI: Makas Kağıdı yener| Kağıt Taşı yener | Taş Makas'ı ye
 */
 
 function oyun(oyuncu, bilgisayar) {
-  /*buraya kodunu yazabilirsin*/
+
+  if((oyuncu.charAt(0) === oyuncu.charAt(0).toUpperCase()) &&
+     (bilgisayar.charAt(0) === bilgisayar.charAt(0).toUpperCase())
+  ) {
+    if(oyuncu === bilgisayar) {
+      return "Beraberlik";
+    } else if((oyuncu === "Taş" && bilgisayar === "Makas") ||
+       (oyuncu === "Makas" && bilgisayar === "Kağıt") || 
+       (oyuncu === "Kağıt" && bilgisayar === "Taş") 
+    ) {
+      return "Kazandın!";
+    } else {
+      return "Kaybettin!";
+    }
+  }
 }
 
 // Şimdi Taş, Kağıt, Makas oyununu bilgisayara karşı oynayalım!
@@ -113,8 +141,8 @@ Aşağdaki milDonusturucu fonksiyonunu aşağıdakileri kullanarak tamamla:
 3. Mil değerini geri dönün
 */
 
-function milDonusturucu(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function milDonusturucu(kilometre) {
+  return kilometre * 0.621371;
 }
 
 //Görev 4b - Santimetreden Feet
@@ -127,8 +155,8 @@ Aşağıdakileri feetDonusturucu fonsiyonunu kullanarak yap:
 Google'da arama ipucu: "feet cm dönüştürme"
 */
 
-function feetDonusturucu(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function feetDonusturucu(santimetre) {
+  return santimetre / 30.48;
 }
 
 /* Görev 5 : 5 küçük maymun yatakta zıplamış şarkısını çocuklar için hazırladığımı varsayalım. https://www.youtube.com/watch?v=e4EJ34xnlxk */
@@ -144,8 +172,14 @@ Aşağıdakileri cocukSarkisi fonksiyonunda yap:
 4. Bu döngüde, her seferinde cocukSarkisi fonsiyonu çalışsın ve console.log'a dönen metni yazdırsın.
 */
 
-function cocukSarkisi(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function cocukSarkisi(maymunSayisi) {
+ return `${maymunSayisi} küçük maymun yatakta zıplamış, biri düşüp başını çarpmış, Anne doktoru aramış, Doktor çok kızmış: Bir daha yatakta zıplamak yok!`;
+}
+
+let maymunSayisi = 5;
+while(maymunSayisi > 0){
+  console.log(cocukSarkisi(maymunSayisi));
+  maymunSayisi --;
 }
 
 /* Görev 6 : Not Hesaplayıcı */
@@ -163,8 +197,18 @@ Aşağdakileri notHesapla fonksiyonunda yap.
  dönün
 */
 
-function notHesapla(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function notHesapla(sonuc) {
+  if(90 <= sonuc && sonuc <= 100) {
+    return "A aldın";
+  } else if(80 <= sonuc && sonuc < 90) {
+    return "B aldın";
+  } else if(70 <= sonuc && sonuc < 80) {
+    return "C aldın";
+  } else if(60 <= sonuc && sonuc < 70) {
+    return "D aldın";
+  } else {
+    return "F aldın";
+  }
 }
 
 /* Bonus Çalışma: Sesli harf sayacı - Kaç tane sesli harf var? */
@@ -178,8 +222,15 @@ Aşağıdakileri sesliHarfSayaci fonskiyonunda yap.
 İPUCU - .includes() methoduna bakabilirsin. (https://www.w3schools.com/jsref/jsref_includes.asp)
 */
 
-function sesliHarfSayaci(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function sesliHarfSayaci(arg) {
+  const sesliHarfler = ['a', 'e', 'ı', 'i', 'o', 'ö', 'u', 'ü'];
+  let count = 0;
+  for(let i = 0;i < sesliHarfler.length;i++) {
+    if(arg.includes(sesliHarfler[i]) || arg.includes(sesliHarfler[i].toLocaleUpperCase())){
+      count ++;
+    }
+  }
+  return count;
 }
 
 /* Lütfen bu satırın alt tarafını değiştirmeyin */
